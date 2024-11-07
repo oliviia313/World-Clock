@@ -1,13 +1,3 @@
-// let cities = document.querySelector("#cities");
-// function showTime(e) {
-//   if (e.target.value.length > 0) {
-//     let dateTime = moment()
-//       .tz(e.target.value)
-//       .format("dddd, MMMM D, YYYY hh:mm A");
-//     alert(`It is currently ${dateTime} in ${e.target.value}`);
-//   }
-// }
-// cities.addEventListener("change", showTime);
 function updateTime() {
   let losAngelesElement = document.querySelector("#los-angeles");
   if (losAngelesElement) {
@@ -36,6 +26,9 @@ function updateTime() {
 
 function updateInfo(e) {
   let timeZone = e.target.value;
+  if (timeZone === "current") {
+    timeZone = moment.tz.guess();
+  }
   let time = moment().tz(timeZone);
   let cityName = timeZone.replace("_", " ").split("/")[1];
   let cities = document.querySelector("#cities");
